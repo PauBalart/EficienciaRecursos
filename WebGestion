@@ -14,7 +14,9 @@
         .form-row { margin-bottom: 10px; }
         .btn { padding: 8px 16px; background: #007bff; color: #fff; border: none; cursor: pointer; }
         .btn:hover { background: #0056b3; }
+        #grafico-container { background: #fff; padding: 20px; border-radius: 8px; margin-top: 30px; }
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <h1>Control de Eficiencia de Recursos Humanos</h1>
