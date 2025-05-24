@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Control de Eficiencia de Recursos Humanos</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; background: #f4f4f4; }
+        h1 { color: #333; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ccc; padding: 8px; text-align: center; }
+        th { background: #eee; }
+        input, select { padding: 6px; }
+        .form-row { margin-bottom: 10px; }
+        .btn { padding: 8px 16px; background: #007bff; color: #fff; border: none; cursor: pointer; }
+        .btn:hover { background: #0056b3; }
+    </style>
+</head>
+<body>
+    <h1>Control de Eficiencia de Recursos Humanos</h1>
+    <form id="registroForm">
+        <div class="form-row">
+            <label>Proyecto: <input type="text" id="proyecto" required></label>
+            <label>Recurso: <input type="text" id="recurso" required></label>
+            <label>Horas Trabajadas: <input type="number" id="horas" min="0" required></label>
+            <label>Horas Planificadas: <input type="number" id="planificadas" min="0" required></label>
+            <button class="btn" type="submit">Agregar</button>
+        </div>
+    </form>
+    <table id="tabla">
+        <thead>
+            <tr>
+                <th>Proyecto</th>
+                <th>Recurso</th>
+                <th>Horas Trabajadas</th>
+                <th>Horas Planificadas</th>
+                <th>Eficiencia (%)</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <script>
+        const form = document.getElementById('registroForm');
+        const tabla = document.getElementById('tabla').querySelector('tbody');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const proyecto = document.getElementById('proyecto').value;
+            const recurso = document.getElementById('recurso').value;
+            const horas = parseFloat(document.getElementById('horas').value);
+            const planificadas = parseFloat(document.getElementById('planificadas').value);
+            const eficiencia = planificadas > 0 ? ((horas / planificadas) * 100).toFixed(2) : '0.00';
+
+            const row = tabla.insertRow();
+            row.insertCell(0).textContent = proyecto;
+            row.insertCell(1).textContent = recurso;
+            row.insertCell(2).textContent = horas;
+            row.insertCell(3).textContent = planificadas;
+            row.insertCell(4).textContent = eficiencia;
+
+            form.reset();
+        });
+    </script>
+</body>
+</html>
